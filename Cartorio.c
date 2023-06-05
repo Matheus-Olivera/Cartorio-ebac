@@ -5,75 +5,75 @@
 	
 	int registro() //função que cadastra os usuários
 	{
-		//ínicio das variaveis/stirng
-		char cpf[40];
-		char nome[40];
-		char sobrenome[40];
-		char cargo[40];
-		char arquivo[40];
-		//final das variaveis
+	//ínicio das variaveis/stirng
+	char cpf[40];
+	char nome[40];
+	char sobrenome[40];
+	char cargo[40];
+	char arquivo[40];
+	//final das variaveis
+	
+	printf("Digite o seu CPF: ");//coletando dados do usuário
+	scanf("%s",cpf);//%s refere-se a string
 		
-		printf("Digite o seu CPF: ");//coletando dados do usuário
-		scanf("%s",cpf);//%s refere-se a string
+	strcpy(arquivo, cpf); // responsavel por copiar os valores das strings
 		
-		strcpy(arquivo, cpf); // responsavel por copiar os valores das strings
+	FILE *file; //chama o FILE
+	file= fopen(arquivo, "w"); // cria o arquivo w = write
+	fprintf(file,cpf); //salva o valor da variavel
+	fclose(file);// fecha o arquivo
 		
-		FILE *file; //chama o FILE
-		file= fopen(arquivo, "w"); // cria o arquivo w = write
-		fprintf(file,cpf); //salva o valor da variavel
-		fclose(file);// fecha o arquivo
+	file = fopen(arquivo, "a");
+	fprintf(file,",");
+	fclose(file);
 		
-		file = fopen(arquivo, "a");
-		fprintf(file,",");
-		fclose(file);
+	printf("Digite o nome a ser cadastrado: ");
+	scanf("%s",nome);
 		
-		printf("Digite o nome a ser cadastrado: ");
-		scanf("%s",nome);
+	file = fopen(arquivo, "a");
+	fprintf(file,nome);
+	fclose(file);
 		
-		file = fopen(arquivo, "a");
-		fprintf(file,nome);
-		fclose(file);
+	file = fopen(arquivo, "a");
+	fprintf(file,",");
+	fclose(file);
 		
-		file = fopen(arquivo, "a");
-		fprintf(file,",");
-		fclose(file);
+	printf("Digite o sobrenome a ser cadastrado: ");
+	scanf("%s",sobrenome);
 		
-		printf("Digite o sobrenome a ser cadastrado: ");
-		scanf("%s",sobrenome);
+	file = fopen(arquivo, "a");
+	fprintf(file,sobrenome);
+	fclose(file);
 		
-		file = fopen(arquivo, "a");
-		fprintf(file,sobrenome);
-		fclose(file);
+	file = fopen(arquivo, "a");
+	fprintf(file,",");
+	fclose(file);
 		
-		file = fopen(arquivo, "a");
-		fprintf(file,",");
-		fclose(file);
+	printf("Digite o cargo a ser cadastrado: ");
+	scanf("%s",cargo);
 		
-		printf("Digite o cargo a ser cadastrado: ");
-		scanf("%s",cargo);
+	file = fopen(arquivo, "a");
+	fprintf(file,cargo);
+	fclose(file);
 		
-		file = fopen(arquivo, "a");
-		fprintf(file,cargo);
-		fclose(file);
-		
-		system("pause");
+	system("pause");
 		
 	}
 	
 	int consulta()
 	
 	{
-		setlocale(LC_ALL, "Portuguese"); //definindo a linguagem
-		char cpf[40];
-		char conteudo[200];
+	setlocale(LC_ALL, "Portuguese"); //definindo a linguagem
+	char cpf[40];
+	char conteudo[200];
 		
-		printf("Digite o CPF a ser consultado: ");
-		scanf("%s",cpf);
+	printf("Digite o CPF a ser consultado: ");
+	scanf("%s",cpf);
 		
-		FILE *file;
-		file = fopen(cpf, "r");
+	FILE *file;
+	file = fopen(cpf, "r");
 		
-		if(file == NULL)
+	if(file == NULL)
 		{
 		printf("Usuário não localizado.\n ");  	
 		}	
@@ -85,7 +85,7 @@
 			printf("\n\n");
 		}
 		
-		system("pause");
+	system("pause");
 		
 		
 	}
@@ -93,24 +93,24 @@
 	int deletar()
 	
 	{
-		char cpf[40];
+	char cpf[40];
+	
+	printf("Qual o CPF a ser deletado?: ");
+	scanf("%s", cpf);
 		
-		printf("Qual o CPF a ser deletado?: ");
-		scanf("%s", cpf);
+	remove(cpf);
 		
-		remove(cpf);
+	FILE *file;
+	file = fopen(cpf,"r");
 		
-		FILE *file;
-		file = fopen(cpf,"r");
-		
-		if(file == NULL)	
+	if(file == NULL)	
 			
 		{
 			printf("esse usuário não existe no sistema!\n");
 			
 		}
 			 	
-		system("pause");
+	system("pause");
 		
 	}
 	
@@ -144,25 +144,25 @@
 	
 	switch(opcao) //ínicio da seleção do menu
 	
-		{	case 1:
-			registro();//chmada de funções
-			break;
+	{	case 1:
+		registro();//chmada de funções
+		break;
 			
-			case 2:
-			consulta();
-			break;
+		case 2:
+		consulta();
+		break;
 			
-			case 3:
-			deletar();
-			break;
+		case 3:
+		deletar();
+		break;
 			
-			default:
-			printf("Essa opção não está disponível!\n");
-			system("pause");
-			break;
-			//fim da selção
-		}
-	 }
+		default:
+		printf("Essa opção não está disponível!\n");
+		system("pause");
+		break;
+		//fim da selção
+	}
+ }
 
 }
 
